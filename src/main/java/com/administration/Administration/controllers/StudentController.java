@@ -5,8 +5,8 @@
  */
 package com.administration.Administration.controllers;
 
-import com.administration.Administration.models.Semester;
-import com.administration.Administration.repository.SemesterRepository;
+import com.administration.Administration.models.Student;
+import com.administration.Administration.repository.StudentRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,13 +18,14 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Samrat
  */
 @RestController
-@RequestMapping("/semester")
-public class SemesterController {
+@RequestMapping("/student")
+public class StudentController {
     @Autowired
-    SemesterRepository semesterRepo;
+    StudentRepository studentRepo;
     
     @RequestMapping(value="/List", method=RequestMethod.GET)
-    public List<Semester> getAllSemester(){
-        return semesterRepo.findAll();
+    public List<Student> getAllstudent(){
+        return studentRepo.findAll();
     }
 }
+

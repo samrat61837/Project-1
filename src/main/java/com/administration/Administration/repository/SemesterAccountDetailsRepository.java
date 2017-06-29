@@ -5,12 +5,13 @@
  */
 package com.administration.Administration.repository;
 
+import com.administration.Administration.models.SemesterAccountDetails;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
  * @author Samrat
  */
-public interface SemesterAccountDetails extends JpaRepository<SemesterAccountDetails,Long>{
+public interface SemesterAccountDetailsRepository extends JpaRepository<SemesterAccountDetails,Long>{
     
 }
