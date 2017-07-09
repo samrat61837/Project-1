@@ -7,8 +7,10 @@ package com.administration.Administration.controllers;
 
 import com.administration.Administration.models.Role;
 import com.administration.Administration.repository.RoleRepository;
+import com.administration.Administration.utils.ApiConstants;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,13 +20,17 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Samrat
  */
 @RestController
-@RequestMapping("/role")
+@RequestMapping(ApiConstants.BASE_ADMIN_URL+ApiConstants.ROLE)
 public class RoleController {
-    @Autowired
-    RoleRepository roleRepo;
     
-    @RequestMapping(value="/List", method=RequestMethod.GET)
-    public List<Role> getAllRoles(){
+  @Autowired
+    RoleRepository roleRepo;
+  @RequestMapping(value="list", method=RequestMethod.GET)
+    public List<Role> getallRoles(){
         return roleRepo.findAll();
     }
+    @RequestMapping(value="{id}",method=RequestMethod.GET)
+    public Role getRoleById(@PathVariable("id")Integer id){
+        return roleRepo.findOne(id);
+}
 }

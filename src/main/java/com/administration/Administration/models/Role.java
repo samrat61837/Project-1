@@ -5,6 +5,7 @@
  */
 package com.administration.Administration.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -45,6 +46,7 @@ public class Role implements Serializable {
     @Column(name = "type")
     private String type;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "roleId")
+    @JsonIgnore
     private List<User> userList;
 
     public Role() {
