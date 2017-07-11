@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Samrat
  */
 @RestController
-@RequestMapping(ApiConstants.BASE_ADMIN_URL+ApiConstants.StudentFacultyEnrollment)
+@RequestMapping(ApiConstants.BASE_ADMIN_URL+ApiConstants.STUDENTFACULTYENROLLMENT)
 public class StudentFacultyEnrollmentController {
     
   @Autowired

@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
  @RestController
-@RequestMapping(ApiConstants.BASE_ADMIN_URL+ApiConstants.SemesterAccountDetails)
+@RequestMapping(ApiConstants.BASE_ADMIN_URL+ApiConstants.SEMESTERACCOUNTDETAILS)
 public class SemesterAccountDetailsController {
     
   @Autowired

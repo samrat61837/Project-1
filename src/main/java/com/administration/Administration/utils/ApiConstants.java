@@ -19,8 +19,8 @@ public class ApiConstants {
     public static final String FACULTY  = "/faculty/";
     public static final String SEMESTER = "/semester/";
     public static final String STUDENT  = "/student/";
-    public static final String StudentFacultyEnrollment = "/studentfacultyenrollment/";
-    public static final String SemesterAccountDetails = "/semesteraccountdetails/";
+    public static final String STUDENTFACULTYENROLLMENT = "/studentfacultyenrollment/";
+    public static final String SEMESTERACCOUNTDETAILS = "/semesteraccountdetails/";
    
   
     

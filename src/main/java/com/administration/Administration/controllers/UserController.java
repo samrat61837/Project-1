@@ -1,3 +1,4 @@
+package com.administration.Administration.controllers;
 
 import com.administration.Administration.models.User;
 import com.administration.Administration.repository.UserRepository;
@@ -26,7 +27,7 @@ public class UserController {
         return userRepo.findAll();
     }
     @RequestMapping(value="{id}",method=RequestMethod.GET)
-    public User getRoleById(@PathVariable("id")Integer id){
+    public User getUserById(@PathVariable("id") int id){
         return userRepo.findOne(id);
 }
 }
