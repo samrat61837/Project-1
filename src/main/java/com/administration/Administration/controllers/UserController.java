@@ -1,11 +1,13 @@
 package com.administration.Administration.controllers;
 
+import com.administration.Administration.models.Student;
 import com.administration.Administration.models.User;
 import com.administration.Administration.repository.UserRepository;
 import com.administration.Administration.utils.ApiConstants;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,4 +32,8 @@ public class UserController {
     public User getUserById(@PathVariable("id") int id){
         return userRepo.findOne(id);
 }
+     @RequestMapping(value="saveuser",method=RequestMethod.POST)
+    public User saveUser (@RequestBody User user){
+        return userRepo.save(user);
+    }
 }

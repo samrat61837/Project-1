@@ -5,12 +5,14 @@
  */
 package com.administration.Administration.controllers;
 
+import com.administration.Administration.models.Semester;
 import com.administration.Administration.models.Student;
 import com.administration.Administration.repository.StudentRepository;
 import com.administration.Administration.utils.ApiConstants;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,5 +35,9 @@ public class StudentController {
     public Student getRoleById(@PathVariable("id")Long id){
         return studentRepo.findOne(id);
 }
+     @RequestMapping(value="savestudent",method=RequestMethod.POST)
+    public Student saveStudent (@RequestBody Student student){
+        return studentRepo.save(student);
+    }
 }
 
