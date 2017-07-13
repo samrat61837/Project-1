@@ -33,5 +33,9 @@ public class StudentController {
     public Student getRoleById(@PathVariable("id")Long id){
         return studentRepo.findOne(id);
 }
+    @RequestMapping(value="/[id]", method=RequestMethod.DELETE)
+public void deleteUserBYId(@PathVariable long id){
+    studentRepo.delete(id);
+}
 }
 

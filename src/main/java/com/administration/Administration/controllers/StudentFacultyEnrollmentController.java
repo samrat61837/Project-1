@@ -33,4 +33,8 @@ public class StudentFacultyEnrollmentController {
     public StudentFacultyEnrollment getStudentFacultyEnrollmentById(@PathVariable("id")Long id){
         return studentfacultyenrollmentRepo.findOne(id);
 }
+    @RequestMapping(value="/[id]", method=RequestMethod.DELETE)
+public void deleteUserBYId(@PathVariable long id){
+    studentfacultyenrollmentRepo.delete(id);
+}
 }

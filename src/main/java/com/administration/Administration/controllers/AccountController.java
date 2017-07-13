@@ -33,4 +33,10 @@ public class AccountController {
     public Account getAccountById(@PathVariable("id")Long id){
     return accountRepo.findOne(id);
     }
+
+
+@RequestMapping(value="/[id]", method=RequestMethod.DELETE)
+public void deleteUserBYId(@PathVariable Long id){
+    accountRepo.delete(id);
+}
 }

@@ -30,4 +30,8 @@ public class UserController {
     public User getUserById(@PathVariable("id") int id){
         return userRepo.findOne(id);
 }
+    @RequestMapping(value="/[id]", method=RequestMethod.DELETE)
+public void deleteUserBYId(@PathVariable int id){
+    userRepo.delete(id);
+}
 }

@@ -34,5 +34,9 @@ public class SemesterAccountDetailsController {
     public SemesterAccountDetails getSemesterAccountDetailsById(@PathVariable("id")Long id){
         return semesteraccountdetailsRepo.findOne(id);
     }
+    @RequestMapping(value="/[id]", method=RequestMethod.DELETE)
+public void deleteUserBYId(@PathVariable long id){
+    semesteraccountdetailsRepo.delete(id);
+}
 }
 
