@@ -33,4 +33,8 @@ public class FacultyController {
     public Faculty getFacultyById(@PathVariable("id")Integer id){
         return facultyRepo.findOne(id);
 }
+    @RequestMapping(value="/[id]", method=RequestMethod.DELETE)
+public void deleteUserBYId(@PathVariable int id){
+    facultyRepo.delete(id);
+}
 }

@@ -32,8 +32,15 @@ public class UserController {
     public User getUserById(@PathVariable("id") int id){
         return userRepo.findOne(id);
 }
+<<<<<<< HEAD
      @RequestMapping(value="saveuser",method=RequestMethod.POST)
     public User saveUser (@RequestBody User user){
         return userRepo.save(user);
     }
+=======
+    @RequestMapping(value="/[id]", method=RequestMethod.DELETE)
+public void deleteUserBYId(@PathVariable int id){
+    userRepo.delete(id);
+}
+>>>>>>> 29f73fbbd61f447f7647b35e19d1e3fbab84c5f3
 }

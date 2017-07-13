@@ -33,4 +33,9 @@ public class RoleController {
     public Role getRoleById(@PathVariable("id")Integer id){
         return roleRepo.findOne(id);
 }
+    
+    @RequestMapping(value="/[id]", method=RequestMethod.DELETE)
+public void deleteUserBYId(@PathVariable int id){
+    roleRepo.delete(id);
+}
 }

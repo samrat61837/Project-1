@@ -35,8 +35,15 @@ public class StudentFacultyEnrollmentController {
     public StudentFacultyEnrollment getStudentFacultyEnrollmentById(@PathVariable("id")Long id){
         return studentfacultyenrollmentRepo.findOne(id);
 }
+<<<<<<< HEAD
      @RequestMapping(value="savestudentfacultyenrollment",method=RequestMethod.POST)
     public StudentFacultyEnrollment saveStudentFacultyEnrollment (@RequestBody StudentFacultyEnrollment studentfacultyenrollment){
         return studentfacultyenrollmentRepo.save(studentfacultyenrollment);
     }
+=======
+    @RequestMapping(value="/[id]", method=RequestMethod.DELETE)
+public void deleteUserBYId(@PathVariable long id){
+    studentfacultyenrollmentRepo.delete(id);
+}
+>>>>>>> 29f73fbbd61f447f7647b35e19d1e3fbab84c5f3
 }
