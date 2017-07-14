@@ -34,8 +34,17 @@ public class AccountController {
     public Account getAccountById(@PathVariable("id")Long id){
     return accountRepo.findOne(id);
     }
+
     @RequestMapping(value="saveaccount", method=RequestMethod.POST)
     public Account saveAccount (@RequestBody Account account){
         return accountRepo.save(account);
     }
+
+
+
+@RequestMapping(value="/[id]", method=RequestMethod.DELETE)
+public void deleteAccountBYId(@PathVariable Long id){
+    accountRepo.delete(id);
+
+}
 }

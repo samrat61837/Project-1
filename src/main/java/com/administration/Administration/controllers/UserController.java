@@ -1,5 +1,6 @@
 package com.administration.Administration.controllers;
 
+import com.administration.Administration.models.Student;
 import com.administration.Administration.models.User;
 import com.administration.Administration.repository.UserRepository;
 import com.administration.Administration.utils.ApiConstants;
@@ -31,8 +32,17 @@ public class UserController {
     public User getUserById(@PathVariable("id") int id){
         return userRepo.findOne(id);
 }
+
     @RequestMapping(value="saveuser", method=RequestMethod.POST)
     public User saveUser (@RequestBody User user){
         return userRepo.save(user);
     }
+
+     
+
+    @RequestMapping(value="/[id]", method=RequestMethod.DELETE)
+public void deleteUserBYId(@PathVariable int id){
+    userRepo.delete(id);
+}
+
 }

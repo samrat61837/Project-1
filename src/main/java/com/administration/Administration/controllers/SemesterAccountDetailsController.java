@@ -11,6 +11,7 @@ import com.administration.Administration.utils.ApiConstants;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,5 +35,16 @@ public class SemesterAccountDetailsController {
     public SemesterAccountDetails getSemesterAccountDetailsById(@PathVariable("id")Long id){
         return semesteraccountdetailsRepo.findOne(id);
     }
+
+    @RequestMapping(value="savesemesteraccountdetails",method=RequestMethod.POST)
+    public SemesterAccountDetails saveSemesterAccountDetails (@RequestBody SemesterAccountDetails semesteraccountdetails){
+        return semesteraccountdetailsRepo.save(semesteraccountdetails);
+    }
+
+    @RequestMapping(value="/[id]", method=RequestMethod.DELETE)
+public void deleteSemesterAccountDetailsBYId(@PathVariable long id){
+    semesteraccountdetailsRepo.delete(id);
+}
+
 }
 

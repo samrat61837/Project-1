@@ -5,12 +5,14 @@
  */
 package com.administration.Administration.controllers;
 
+import com.administration.Administration.models.Semester;
 import com.administration.Administration.models.StudentFacultyEnrollment;
 import com.administration.Administration.repository.StudentFacultyEnrollmentRepository;
 import com.administration.Administration.utils.ApiConstants;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,4 +35,15 @@ public class StudentFacultyEnrollmentController {
     public StudentFacultyEnrollment getStudentFacultyEnrollmentById(@PathVariable("id")Long id){
         return studentfacultyenrollmentRepo.findOne(id);
 }
+
+     @RequestMapping(value="savestudentfacultyenrollment",method=RequestMethod.POST)
+    public StudentFacultyEnrollment saveStudentFacultyEnrollment (@RequestBody StudentFacultyEnrollment studentfacultyenrollment){
+        return studentfacultyenrollmentRepo.save(studentfacultyenrollment);
+    }
+
+    @RequestMapping(value="/[id]", method=RequestMethod.DELETE)
+public void deleteStudentFacultyEnrollmentBYId(@PathVariable long id){
+    studentfacultyenrollmentRepo.delete(id);
+}
+
 }

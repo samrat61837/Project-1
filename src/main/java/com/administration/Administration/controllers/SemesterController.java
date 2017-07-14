@@ -6,11 +6,13 @@
 package com.administration.Administration.controllers;
 
 import com.administration.Administration.models.Semester;
+import com.administration.Administration.models.SemesterAccountDetails;
 import com.administration.Administration.repository.SemesterRepository;
 import com.administration.Administration.utils.ApiConstants;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,4 +35,14 @@ public class SemesterController {
     public Semester getSemesterById(@PathVariable("id")Integer id){
         return semesterRepo.findOne(id);
 }
+     @RequestMapping(value="savesemester",method=RequestMethod.POST)
+    public Semester saveSemester (@RequestBody Semester semester){
+        return semesterRepo.save(semester);
+    }
+
+    @RequestMapping(value="/[id]", method=RequestMethod.DELETE)
+public void deleteSemesterBYId(@PathVariable int id){
+    semesterRepo.delete(id);
+}
+
 }
