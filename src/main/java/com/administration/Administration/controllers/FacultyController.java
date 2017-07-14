@@ -11,6 +11,7 @@ import com.administration.Administration.utils.ApiConstants;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,4 +34,8 @@ public class FacultyController {
     public Faculty getFacultyById(@PathVariable("id")Integer id){
         return facultyRepo.findOne(id);
 }
+    @RequestMapping(value="savefaculty", method=RequestMethod.POST)
+    public Faculty saveFaculty (@RequestBody Faculty faculty){
+        return facultyRepo.save(faculty);
+    }
 }

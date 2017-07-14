@@ -11,6 +11,7 @@ import com.administration.Administration.utils.ApiConstants;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,4 +34,10 @@ public class RoleController {
     public Role getRoleById(@PathVariable("id")Integer id){
         return roleRepo.findOne(id);
 }
+    @RequestMapping(value="saverole", method=RequestMethod.POST)
+    public Role saveRole (@RequestBody Role role){
+        return roleRepo.save(role);
+    }
+    
+    
 }

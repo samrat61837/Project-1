@@ -11,6 +11,7 @@ import com.administration.Administration.utils.ApiConstants;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,5 +33,9 @@ public class AccountController {
     @RequestMapping(value="{id}",method=RequestMethod.GET)
     public Account getAccountById(@PathVariable("id")Long id){
     return accountRepo.findOne(id);
+    }
+    @RequestMapping(value="saveaccount", method=RequestMethod.POST)
+    public Account saveAccount (@RequestBody Account account){
+        return accountRepo.save(account);
     }
 }
