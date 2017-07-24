@@ -5,6 +5,7 @@
  */
 package com.administration.Administration.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -45,8 +46,9 @@ public class Faculty implements Serializable {
     @Column(name = "name")
     private String name;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "facultyId")
+    @JsonManagedReference
     private List<Semester> semesterList;
-
+    
     public Faculty() {
     }
 

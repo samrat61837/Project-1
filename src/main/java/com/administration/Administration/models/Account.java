@@ -5,6 +5,8 @@
  */
 package com.administration.Administration.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.List;
@@ -55,11 +57,12 @@ public class Account implements Serializable {
     @Column(name = "amount_due")
     private BigInteger amountDue;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "accountId")
+    @JsonManagedReference
     private List<SemesterAccountDetails> semesterAccountDetailsList;
     @JoinColumn(name = "student_faculty_enrollment_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
+    @JsonBackReference
     private StudentFacultyEnrollment studentFacultyEnrollmentId;
-
     public Account() {
     }
 

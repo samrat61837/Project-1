@@ -42,8 +42,8 @@ public class AccountController {
 
 
 
-@RequestMapping(value="/[id]", method=RequestMethod.DELETE)
-public void deleteAccountBYId(@PathVariable Long id){
+@RequestMapping(value="{id}", method=RequestMethod.DELETE)
+public void deleteAccountById(@PathVariable Long id){
     accountRepo.delete(id);
 
 }

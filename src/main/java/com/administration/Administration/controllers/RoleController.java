@@ -39,8 +39,8 @@ public class RoleController {
         return roleRepo.save(role);
     }
     
-        @RequestMapping(value="/[id]", method=RequestMethod.DELETE)
-public void deleteRoleBYId(@PathVariable int id){
-    roleRepo.delete(id);
+    @RequestMapping(value="id", method=RequestMethod.DELETE)
+    public void deleteRoleById(@PathVariable int id){
+        roleRepo.delete(id);
 }
 }

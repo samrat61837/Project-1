@@ -40,8 +40,8 @@ public class FacultyController {
         return facultyRepo.save(faculty);
     }
 
-    @RequestMapping(value="/[id]", method=RequestMethod.DELETE)
-public void deleteFacultyBYId(@PathVariable int id){
+    @RequestMapping(value="{id}", method=RequestMethod.DELETE)
+public void deleteFacultyById(@PathVariable int id){
     facultyRepo.delete(id);
 }
 

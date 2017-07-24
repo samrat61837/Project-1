@@ -41,8 +41,8 @@ public class SemesterAccountDetailsController {
         return semesteraccountdetailsRepo.save(semesteraccountdetails);
     }
 
-    @RequestMapping(value="/[id]", method=RequestMethod.DELETE)
-public void deleteSemesterAccountDetailsBYId(@PathVariable long id){
+    @RequestMapping(value="{id}", method=RequestMethod.DELETE)
+public void deleteSemesterAccountDetailsById(@PathVariable long id){
     semesteraccountdetailsRepo.delete(id);
 }
 

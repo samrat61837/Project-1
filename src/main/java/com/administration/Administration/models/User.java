@@ -5,6 +5,8 @@
  */
 package com.administration.Administration.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -61,11 +63,13 @@ public class User implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date createddate;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
+    @JsonManagedReference
     private List<Student> studentList;
     @JoinColumn(name = "role_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
+    @JsonBackReference
     private Role roleId;
-
+    
     public User() {
     }
 

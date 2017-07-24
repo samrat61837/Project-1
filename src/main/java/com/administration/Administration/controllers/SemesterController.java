@@ -40,8 +40,8 @@ public class SemesterController {
         return semesterRepo.save(semester);
     }
 
-    @RequestMapping(value="/[id]", method=RequestMethod.DELETE)
-public void deleteSemesterBYId(@PathVariable int id){
+    @RequestMapping(value="{id}", method=RequestMethod.DELETE)
+    public void deleteSemesterById(@PathVariable int id){
     semesterRepo.delete(id);
 }
 

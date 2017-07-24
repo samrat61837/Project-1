@@ -5,6 +5,8 @@
  */
 package com.administration.Administration.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.Date;
@@ -99,7 +101,7 @@ public class Student implements Serializable {
     @NotNull
     @Lob
     @Column(name = "photo")
-    private byte[] photo;
+    private byte [] photo;
     @Size(max = 100)
     @Column(name = "registration")
     private String registration;
@@ -129,11 +131,12 @@ public class Student implements Serializable {
     @Column(name = "batch")
     private int batch;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "studentId")
+    @JsonManagedReference
     private List<StudentFacultyEnrollment> studentFacultyEnrollmentList;
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
+    @JsonBackReference
     private User userId;
-
     public Student() {
     }
 
@@ -141,7 +144,7 @@ public class Student implements Serializable {
         this.id = id;
     }
 
-    public Student(Long id, String fname, String lname, String gender, String address, Date dateofbirth, String email, byte[] photo, String faculty, String semester, String section, int batch) {
+    public Student(Long id, String fname, String lname, String gender, String address, Date dateofbirth, String email, byte [] photo, String faculty, String semester, String section, int batch) {
         this.id = id;
         this.fname = fname;
         this.lname = lname;

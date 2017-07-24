@@ -40,8 +40,8 @@ public class StudentController {
         return studentRepo.save(student);
     }
 
-    @RequestMapping(value="/[id]", method=RequestMethod.DELETE)
-public void deleteStudentBYId(@PathVariable long id){
+    @RequestMapping(value="{id}", method=RequestMethod.DELETE)
+public void deleteStudentById(@PathVariable long id){
     studentRepo.delete(id);
 }
 

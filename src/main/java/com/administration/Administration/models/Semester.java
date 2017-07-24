@@ -5,6 +5,9 @@
  */
 package com.administration.Administration.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -50,10 +53,12 @@ public class Semester implements Serializable {
     private List<StudentFacultyEnrollment> studentFacultyEnrollmentList;
     @JoinColumn(name = "faculty_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
+    @JsonBackReference
     private Faculty facultyId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "semesterId")
+    @JsonManagedReference
     private List<SemesterAccountDetails> semesterAccountDetailsList;
-
+   
     public Semester() {
     }
 

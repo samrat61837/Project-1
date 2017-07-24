@@ -41,8 +41,8 @@ public class StudentFacultyEnrollmentController {
         return studentfacultyenrollmentRepo.save(studentfacultyenrollment);
     }
 
-    @RequestMapping(value="/[id]", method=RequestMethod.DELETE)
-public void deleteStudentFacultyEnrollmentBYId(@PathVariable long id){
+    @RequestMapping(value="{id}", method=RequestMethod.DELETE)
+public void deleteStudentFacultyEnrollmentById(@PathVariable long id){
     studentfacultyenrollmentRepo.delete(id);
 }
 

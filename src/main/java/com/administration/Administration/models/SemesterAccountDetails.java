@@ -5,6 +5,7 @@
  */
 package com.administration.Administration.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.io.Serializable;
 import java.math.BigInteger;
 import javax.persistence.Basic;
@@ -43,11 +44,13 @@ public class SemesterAccountDetails implements Serializable {
     private BigInteger semesterFee;
     @JoinColumn(name = "account_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
+    @JsonBackReference
     private Account accountId;
     @JoinColumn(name = "semester_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
+    @JsonBackReference
     private Semester semesterId;
-
+    
     public SemesterAccountDetails() {
     }
 
@@ -101,10 +104,7 @@ public class SemesterAccountDetails implements Serializable {
             return false;
         }
         SemesterAccountDetails other = (SemesterAccountDetails) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+        return !((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)));
     }
 
     @Override
