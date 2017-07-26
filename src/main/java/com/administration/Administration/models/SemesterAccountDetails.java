@@ -5,7 +5,8 @@
  */
 package com.administration.Administration.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import java.io.Serializable;
 import java.math.BigInteger;
 import javax.persistence.Basic;
@@ -32,6 +33,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "SemesterAccountDetails.findAll", query = "SELECT s FROM SemesterAccountDetails s")
     , @NamedQuery(name = "SemesterAccountDetails.findById", query = "SELECT s FROM SemesterAccountDetails s WHERE s.id = :id")
     , @NamedQuery(name = "SemesterAccountDetails.findBySemesterFee", query = "SELECT s FROM SemesterAccountDetails s WHERE s.semesterFee = :semesterFee")})
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class SemesterAccountDetails implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -44,11 +46,11 @@ public class SemesterAccountDetails implements Serializable {
     private BigInteger semesterFee;
     @JoinColumn(name = "account_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    @JsonBackReference
+    //@JsonBackReference(value = "account-list")
     private Account accountId;
     @JoinColumn(name = "semester_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    @JsonBackReference
+    //@JsonBackReference(value = "semester-list")
     private Semester semesterId;
     
     public SemesterAccountDetails() {

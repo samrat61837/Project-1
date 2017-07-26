@@ -5,8 +5,8 @@
  */
 package com.administration.Administration.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import java.io.Serializable;
 
 import java.util.List;
@@ -36,6 +36,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "StudentFacultyEnrollment.findAll", query = "SELECT s FROM StudentFacultyEnrollment s")
     , @NamedQuery(name = "StudentFacultyEnrollment.findById", query = "SELECT s FROM StudentFacultyEnrollment s WHERE s.id = :id")})
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class StudentFacultyEnrollment implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -46,14 +47,14 @@ public class StudentFacultyEnrollment implements Serializable {
     private Long id;
     @JoinColumn(name = "semester_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    @JsonBackReference
+    //@JsonBackReference(value = "student-list")
     private Semester semesterId;
     @JoinColumn(name = "student_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    @JsonBackReference
+    //@JsonBackReference(value = "student-list")
     private Student studentId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "studentFacultyEnrollmentId")
-    @JsonManagedReference
+    //@JsonManagedReference(value = "account-list")
     private List<Account> accountList;
     
 

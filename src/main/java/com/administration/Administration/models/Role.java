@@ -5,7 +5,8 @@
  */
 package com.administration.Administration.models;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -34,6 +35,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Role.findAll", query = "SELECT r FROM Role r")
     , @NamedQuery(name = "Role.findById", query = "SELECT r FROM Role r WHERE r.id = :id")
     , @NamedQuery(name = "Role.findByType", query = "SELECT r FROM Role r WHERE r.type = :type")})
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class Role implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -46,7 +48,7 @@ public class Role implements Serializable {
     @Column(name = "type")
     private String type;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "roleId")
-    @JsonManagedReference
+    //@JsonManagedReference(value = "user-list")
     private List<User> userList;
     
     public Role() {

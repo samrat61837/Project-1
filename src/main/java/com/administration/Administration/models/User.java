@@ -5,8 +5,8 @@
  */
 package com.administration.Administration.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -43,9 +43,9 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "User.findByUsername", query = "SELECT u FROM User u WHERE u.username = :username")
     , @NamedQuery(name = "User.findByPassword", query = "SELECT u FROM User u WHERE u.password = :password")
     , @NamedQuery(name = "User.findByCreateddate", query = "SELECT u FROM User u WHERE u.createddate = :createddate")})
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class User implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
@@ -63,11 +63,11 @@ public class User implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date createddate;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
-    @JsonManagedReference
+    //@JsonManagedReference(value = "student-list")
     private List<Student> studentList;
     @JoinColumn(name = "role_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    @JsonBackReference
+    //@JsonBackReference(value = "user-list")
     private Role roleId;
     
     public User() {

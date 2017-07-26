@@ -5,9 +5,8 @@
  */
 package com.administration.Administration.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -38,6 +37,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Semester.findAll", query = "SELECT s FROM Semester s")
     , @NamedQuery(name = "Semester.findById", query = "SELECT s FROM Semester s WHERE s.id = :id")
     , @NamedQuery(name = "Semester.findBySemester", query = "SELECT s FROM Semester s WHERE s.semester = :semester")})
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class Semester implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -53,10 +53,10 @@ public class Semester implements Serializable {
     private List<StudentFacultyEnrollment> studentFacultyEnrollmentList;
     @JoinColumn(name = "faculty_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    @JsonBackReference
+    //@JsonBackReference(value = "faculty-list")
     private Faculty facultyId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "semesterId")
-    @JsonManagedReference
+    //@JsonManagedReference(value = "semester-account-details-list")
     private List<SemesterAccountDetails> semesterAccountDetailsList;
    
     public Semester() {

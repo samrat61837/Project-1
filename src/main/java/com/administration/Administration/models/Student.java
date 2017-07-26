@@ -5,8 +5,8 @@
  */
 package com.administration.Administration.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.Date;
@@ -56,6 +56,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Student.findBySemester", query = "SELECT s FROM Student s WHERE s.semester = :semester")
     , @NamedQuery(name = "Student.findBySection", query = "SELECT s FROM Student s WHERE s.section = :section")
     , @NamedQuery(name = "Student.findByBatch", query = "SELECT s FROM Student s WHERE s.batch = :batch")})
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class Student implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -131,11 +132,11 @@ public class Student implements Serializable {
     @Column(name = "batch")
     private int batch;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "studentId")
-    @JsonManagedReference
+    //@JsonManagedReference(value = "student-faculty-enrollment-list")
     private List<StudentFacultyEnrollment> studentFacultyEnrollmentList;
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    @JsonBackReference
+    //@JsonBackReference(value = "student-list")
     private User userId;
     public Student() {
     }
